@@ -1,0 +1,25 @@
+{
+  "name": "user-accounts-seneca-example",
+  "version": "0.0.2",
+  "description": "User accounts example",
+  "subdomain": "user-accounts-seneca-example",
+  "main": "app.js",
+  "scripts": {
+    "start": "app.js"
+  },
+  "repository": "",
+  "author": "Richard Rodger",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~3.0.4",
+    "optimist": "~0.3.5",
+    "ejs": "~0.8.3",
+    "ejs-locals": "~1.0.2"
+  },
+  "files": [
+    "app.js"
+  ],
+  "engines": {
+    "node": "0.8.x"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "seneca-examples",
+  "version": "0.0.1",
+  "description": "Examples apps using the seneca Node.js module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rjrodger/seneca-examples"
+  },
+  "keywords": [
+    "seneca",
+    "example",
+    "apps"
+  ],
+  "author": "Richard Rodger",
+  "license": "BSD",
+  "dependencies": {
+    "seneca": "~0.4.2"
+  }
+}
