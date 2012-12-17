@@ -14,7 +14,10 @@
     "express": "~3.0.4",
     "optimist": "~0.3.5",
     "ejs": "~0.8.3",
-    "ejs-locals": "~1.0.2"
+    "ejs-locals": "~1.0.2",
+    "seneca": "~0.4.3",
+    "seneca-user": "~0.1.1",
+    "seneca-auth": "~0.1.1"
   },
   "files": [
     "app.js"

@@ -1,0 +1,36 @@
+<div id="content_login" class="content">
+
+<h1>Login</h1>
+<form id="login" action="/auth/login" method="post">
+
+<p>
+<label for="username">Username:</label><br />
+<input name="username" />
+</p>
+
+<p>
+<label for="username">Password:</label><br />
+<input type="password" name="password" />
+</p>
+
+<p>
+<input type="submit">
+</p>
+</form>
+
+</div>
+
+
+<div id="content_login" class="content">
+
+
+<h1>Account</h1>
+
+Username: <%-user.nick%><br />
+Email: <%-user.email%><br />
+
+
+<a href="/auth/logout">logout</a>
+
+
+</div>

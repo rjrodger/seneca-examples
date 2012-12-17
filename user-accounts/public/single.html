@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/util/browser.js"></script>
+<script src="/js/user-accounts.js"></script>
+</head>
+<body>
+
+<p><a href="/">Main Menu</a></p>
+
+
+<div id="content_login" class="content">
+
+<h1>Login</h1>
+<form id="login" action="/auth/login" method="post">
+
+<p>
+<label for="username">Username:</label><br />
+<input id="username" name="username" />
+</p>
+
+<p>
+<label for="username">Password:</label><br />
+<input type="password" id="password" name="password" />
+</p>
+
+<p>
+<input type="submit">
+</p>
+</form>
+
+</div>
+
+
+<div id="content_account" class="content" style="display:none">
+
+
+<h1>Account</h1>
+
+Username: <span id="user_name"></span><br />
+Email: <span id="user_email"></span><br />
+
+<button id="logout">logout</button>
+
+</div>
+
+
+
+</body>
+</html>

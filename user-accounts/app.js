@@ -41,15 +41,20 @@ app.get('/login', function(req, res){
   res.render('login.ejs',{})
 })
 
-app.get('/account', function(req, res){
-  res.render('account.ejs',{locals:{user:req.seneca.user}})
-})
-
 
 app.get('/',function(req,res){
   res.writeHead(200)
   res.end('hello')
 })
+
+
+
+
+app.get('/account', function(req, res){
+  res.render('account.ejs',{locals:{user:req.seneca.user}})
+})
+
+
 
 
 var u = si.pin({role:'user',cmd:'*'})
