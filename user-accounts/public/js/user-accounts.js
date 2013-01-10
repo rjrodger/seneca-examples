@@ -14,21 +14,25 @@ $(function(){
   })
 
 
-  http.get('/auth/instance',function(instance){
-    if( instance.user ) showAccount(instance)
-  })
+  http.get('/auth/instance',showAccount)
 })
 
 
-function showAccount(instance) {
-  $('#user_name').text(instance.user.name)
-  $('#user_email').text(instance.user.email)
+function showAccount(err,instance) {
+  if( err ) return console.log(err);
 
-  $('#content_login').slideUp()
-  $('#content_account').slideDown()
+  if( instance.user ) {
+    $('#user_name').text(instance.user.name)
+    $('#user_email').text(instance.user.email)
+
+    $('#content_login').slideUp()
+    $('#content_account').slideDown()
+  }
 }
 
-function showLogin() {
+function showLogin(err) {
+  if( err ) return console.log(err);
+
   $('#content_login').slideDown()
   $('#content_account').slideUp()
 }

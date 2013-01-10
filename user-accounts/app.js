@@ -2,6 +2,8 @@
 
 "use strict";
 
+var http = require('http')
+
 var express = require('express')
 var argv    = require('optimist').argv
 var seneca  = require('seneca')
@@ -11,7 +13,7 @@ var conf = {
 }
 
 
-var si = seneca({log:'print'})
+var si = seneca()
 si.use('util')
 si.use('user')
 si.use('auth',{redirect:{login:{win:'/account',fail:'/login#failed'}}})
@@ -20,7 +22,7 @@ si.use('auth',{redirect:{login:{win:'/account',fail:'/login#failed'}}})
 var app = express()
 app.enable('trust proxy')
 
-app.use(express.logger())
+//app.use(express.logger())
 app.use(express.cookieParser())
 app.use(express.query())
 app.use(express.bodyParser())
@@ -41,14 +43,10 @@ app.get('/login', function(req, res){
   res.render('login.ejs',{})
 })
 
-
 app.get('/',function(req,res){
   res.writeHead(200)
   res.end('hello')
 })
-
-
-
 
 app.get('/account', function(req, res){
   res.render('account.ejs',{locals:{user:req.seneca.user}})
@@ -56,10 +54,11 @@ app.get('/account', function(req, res){
 
 
 
-
 var u = si.pin({role:'user',cmd:'*'})
 u.register({nick:'u1',name:'nu1',email:'u1@example.com',password:'u1',active:true})
 
 
-app.listen(conf.port)
+var server = http.createServer(app)
+server.listen(conf.port)
 
+si.use('admin',{server:server})
