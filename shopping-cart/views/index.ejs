@@ -2,9 +2,12 @@
 
 <h1>Products</h1>
 
-<div id="app01">Apple</div>
-<div id="ora02">Orange</div>
+<div id="app01" class="buy">Buy an Apple!</div>
+<div id="ora02" class="buy">Buy an Orange!</div>
 
 <form id="prod_form" method="post" action="/api/cart/add">
 <input type="hidden" id="code_input" name="code">
 </form>
+
+<br />
+<a href="/cart">your cart (<%=table ? table.entries.length : 0%> items)</a>

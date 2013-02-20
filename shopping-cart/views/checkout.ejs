@@ -1,0 +1,37 @@
+<% layout('layout') -%>
+
+<h1>Checkout</h1>
+
+<% if( !table ) { %>
+
+Nothing in your cart.
+<a href="/">buy something</a>
+
+<% } else { %>
+<table>
+
+<% var entries = table.entries || [] 
+   for( var i = 0; i < entries.length; i++ ) {
+     var entry = entries[i]
+%>
+<tr>
+<td><%-entry.name%></td>
+<td align="right"><%-formatprice(entry.price)%></td>
+</tr>
+<% } %>
+
+<tr>
+<th>Total</th>
+<th align="right"><%-table.total%></th>
+</tr>
+
+</table>
+
+
+
+
+<% } %>
+
+
+<br />
+<a href="/cart">cancel</a>

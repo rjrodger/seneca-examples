@@ -2,3 +2,41 @@
 
 <h1>Cart</h1>
 
+<% if( !table ) { %>
+
+Nothing in your cart.
+
+<% } else { %>
+<table>
+
+<% var entries = table.entries || [] 
+   for( var i = 0; i < entries.length; i++ ) {
+     var entry = entries[i]
+%>
+<tr data-entry="<%-entry.id%>" class="entry">
+<td><%-entry.name%></td>
+<td align="right"><%-formatprice(entry.price)%></td>
+<td class="remove">remove</td>
+</tr>
+<% } %>
+
+
+<tr>
+<th>Total</th>
+<th align="right"><%-formatprice(table.total)%></th>
+</tr>
+
+</table>
+<% } %>
+
+
+<br />
+<a href="/checkout">checkout!</a>
+<br />
+<br />
+<a href="/">buy more!</a>
+
+
+<form id="cart_form" method="post" action="/api/cart/remove">
+<input type="hidden" id="entry_input" name="entry">
+</form>

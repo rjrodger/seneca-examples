@@ -16,6 +16,8 @@ var seneca  = require('seneca')()
 seneca.use('engage')
 seneca.use('cart')
 
+var cart = seneca.pin({role:'cart',cmd:'*'})
+
 
 var product_ent = seneca.make$('shop','product')
 var apple  = product_ent.make$({name:'apple',price:1,code:'app01'}).save$(function(e,o){apple=o})
@@ -41,12 +43,26 @@ app.set('views', __dirname + '/views')
 app.set('view engine','ejs')
 
 
+
 app.get('/', function(req, res){
-  res.render('index.ejs',{locals:{}})
+  cart.table({req:req,res:res,create:false},function(err,table){
+    if( err ) return next(err);
+    res.render('index.ejs',{locals:{table:table,formatprice:formatprice}})
+  })
 })
 
-app.get('/cart', function(req, res){
-  res.render('cart.ejs',{locals:{}})
+app.get('/cart', function(req,res,next){
+  cart.table({req:req,res:res,create:true},function(err,table){
+    if( err ) return next(err);
+    res.render('cart.ejs',{locals:{table:table,formatprice:formatprice}})
+  })
+})
+
+app.get('/checkout', function(req,res,next){
+  cart.table({req:req,res:res},function(err,table){
+    if( err ) return next(err);
+    res.render('checkout.ejs',{locals:{table:table,formatprice:formatprice}})
+  })
 })
 
 
@@ -54,3 +70,11 @@ var server = http.createServer(app)
 server.listen(conf.port)
 
 seneca.use('admin',{server:server})
+
+
+
+function formatprice(price) {
+  return '$' + (void 0 == price ? '0.00' : price.toFixed(2))
+}
+
+
