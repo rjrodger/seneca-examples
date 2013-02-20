@@ -14,7 +14,12 @@ var conf = {
 
 var seneca  = require('seneca')()
 seneca.use('engage')
+seneca.use('cart')
 
+
+var product_ent = seneca.make$('shop','product')
+var apple  = product_ent.make$({name:'apple',price:1,code:'app01'}).save$(function(e,o){apple=o})
+var orange = product_ent.make$({name:'orange',price:2,code:'ora02'}).save$(function(e,o){orange=o})
 
 
 var app = express()
@@ -36,22 +41,12 @@ app.set('views', __dirname + '/views')
 app.set('view engine','ejs')
 
 
-var engagement = seneca.pin({role:'engage',cmd:'*'})
-
-app.get('/foo/:bar', function(req, res){
-  engagement.set({key:'foo',value:req.params.bar,req:req,res:res},function(err){
-    if( err ) console.log(err);
-    res.writeHead(200)
-    res.end('done')
-  })
+app.get('/', function(req, res){
+  res.render('index.ejs',{locals:{}})
 })
 
-app.get('/bar',function(req,res){
-  engagement.get({key:'foo',req:req,res:res},function(err,bar){
-    if( err ) console.log(err);
-    res.writeHead(200)
-    res.end('bar:'+bar)
-  })
+app.get('/cart', function(req, res){
+  res.render('cart.ejs',{locals:{}})
 })
 
 
