@@ -45,21 +45,21 @@ app.set('view engine','ejs')
 
 
 app.get('/', function(req, res){
-  cart.table({req:req,res:res,create:false},function(err,table){
+  cart.table({req$:req,res$:res,create:false},function(err,table){
     if( err ) return next(err);
     res.render('index.ejs',{locals:{table:table,formatprice:formatprice}})
   })
 })
 
 app.get('/cart', function(req,res,next){
-  cart.table({req:req,res:res,create:true},function(err,table){
+  cart.table({req$:req,res$:res,create:true},function(err,table){
     if( err ) return next(err);
     res.render('cart.ejs',{locals:{table:table,formatprice:formatprice}})
   })
 })
 
 app.get('/checkout', function(req,res,next){
-  cart.table({req:req,res:res},function(err,table){
+  cart.table({req$:req,res$:res},function(err,table){
     if( err ) return next(err);
     res.render('checkout.ejs',{locals:{table:table,formatprice:formatprice}})
   })
