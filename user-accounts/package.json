@@ -1,6 +1,6 @@
 {
   "name": "user-accounts-seneca-example",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "User accounts example",
   "subdomain": "user-accounts-seneca-example",
   "main": "app.js",
@@ -15,9 +15,9 @@
     "optimist": "~0.3.5",
     "ejs": "~0.8.3",
     "ejs-locals": "~1.0.2",
-    "seneca": "~0.5.0",
+    "seneca": "~0.5.2",
     "seneca-user": "~0.2.0",
-    "seneca-auth": "~0.2.0"
+    "seneca-auth": "~0.2.1"
   },
   "files": [
     "app.js"
