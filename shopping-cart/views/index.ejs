@@ -5,9 +5,9 @@
 <div id="app01" class="buy">Buy an Apple!</div>
 <div id="ora02" class="buy">Buy an Orange!</div>
 
-<form id="prod_form" method="post" action="/api/cart/add">
+<form id="prod_form" method="post" action="/api/cart/add_entry">
 <input type="hidden" id="code_input" name="code">
 </form>
 
 <br />
-<a href="/cart">your cart (<%=table ? table.entries.length : 0%> items)</a>
+<a href="/cart">your cart (<%=cart ? cart.entries.length : 0%> items)</a>

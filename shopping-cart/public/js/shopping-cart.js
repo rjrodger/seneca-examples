@@ -20,7 +20,6 @@ $(function(){
   }
 
   $('td.remove').click(function(){
-    console.log('remove')
     var entry = $(this).parent().data('entry')
     console.log(entry)
     entry_input.val(entry)

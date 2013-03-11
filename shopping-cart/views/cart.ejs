@@ -2,14 +2,14 @@
 
 <h1>Cart</h1>
 
-<% if( !table ) { %>
+<% if( !cart ) { %>
 
 Nothing in your cart.
 
 <% } else { %>
 <table>
 
-<% var entries = table.entries || [] 
+<% var entries = cart.entries || [] 
    for( var i = 0; i < entries.length; i++ ) {
      var entry = entries[i]
 %>
@@ -23,7 +23,7 @@ Nothing in your cart.
 
 <tr>
 <th>Total</th>
-<th align="right"><%-formatprice(table.total)%></th>
+<th align="right"><%-formatprice(cart.total)%></th>
 </tr>
 
 </table>
@@ -37,6 +37,6 @@ Nothing in your cart.
 <a href="/">buy more!</a>
 
 
-<form id="cart_form" method="post" action="/api/cart/remove">
+<form id="cart_form" method="post" action="/api/cart/remove_entry">
 <input type="hidden" id="entry_input" name="entry">
 </form>

@@ -2,7 +2,7 @@
 
 <h1>Checkout</h1>
 
-<% if( !table ) { %>
+<% if( !cart ) { %>
 
 Nothing in your cart.
 <a href="/">buy something</a>
@@ -10,7 +10,7 @@ Nothing in your cart.
 <% } else { %>
 <table>
 
-<% var entries = table.entries || [] 
+<% var entries = cart.entries || [] 
    for( var i = 0; i < entries.length; i++ ) {
      var entry = entries[i]
 %>
@@ -22,7 +22,7 @@ Nothing in your cart.
 
 <tr>
 <th>Total</th>
-<th align="right"><%-table.total%></th>
+<th align="right"><%-cart.total%></th>
 </tr>
 
 </table>

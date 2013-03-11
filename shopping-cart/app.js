@@ -44,6 +44,9 @@ app.use(express.static(__dirname + '/public'))
 // the seneca.service method returns a single function with the signature
 // function(req,res,next) that can be used with connect or express
 // this service method wraps up all the plugin HTTP endpoints
+// seneca includes the connect utility plugin by default, which
+// sets the special arguments req$ and res$ on all seneca calls, allowing
+// seneca actions to access the current HTTP req and res objects 
 app.use( seneca.service() )
 
 
@@ -53,9 +56,18 @@ app.set('views', __dirname + '/views')
 app.set('view engine','ejs')
 
 
-// create a "pin" on the cart plugin, for convenience
-// the cmd's become methods on the cart object
-var cart = seneca.pin({role:'cart',cmd:'*'})
+// create somes "pins" for convenience
+// the patterns generate objects with methods matching the wildcards
+var cart_pin   = seneca.pin({role:'cart',cmd:'*'})
+var engage_pin = seneca.pin({role:'engage',cmd:'*'})
+
+
+// the engage plugin can wrap calls to other actions
+// any matching argument keys are given values from the engagement store
+// in this case, the cart id (if it exists) for the current user is taken from
+// the store and used to set the value of the cart argument key 
+engage_pin.wrap( {pin:{role:'cart',cmd:'*'}, keys:['cart']} )
+
 
 // a utility method
 function formatprice(price) {
@@ -63,24 +75,25 @@ function formatprice(price) {
 }
 
 
-app.get('/', function(req, res){
-  cart.table({req$:req,res$:res,create:false},function(err,table){
+app.get('/', function(req, res, next){
+  req.seneca.act('role:cart,cmd:get',function(err,out) {
     if( err ) return next(err);
-    res.render('index.ejs',{locals:{table:table,formatprice:formatprice}})
+    res.render('index.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
   })
 })
 
+
 app.get('/cart', function(req,res,next){
-  cart.table({req$:req,res$:res,create:true},function(err,table){
+  req.seneca.act('role:cart,cmd:get',function(err,out) {
     if( err ) return next(err);
-    res.render('cart.ejs',{locals:{table:table,formatprice:formatprice}})
+    res.render('cart.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
   })
 })
 
 app.get('/checkout', function(req,res,next){
-  cart.table({req$:req,res$:res},function(err,table){
+  req.seneca.act('role:cart,cmd:get',function(err,out) {
     if( err ) return next(err);
-    res.render('checkout.ejs',{locals:{table:table,formatprice:formatprice}})
+    res.render('checkout.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
   })
 })
 
@@ -93,6 +106,7 @@ server.listen(conf.port)
 // unlike the user-accounts example, the local:true
 // setting means anybody can access the admin panel from localhost
 seneca.use('admin',{server:server,local:true})
+
 
 
 // set up some test products for the store

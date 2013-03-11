@@ -18,6 +18,8 @@
   "author": "Richard Rodger",
   "license": "BSD",
   "dependencies": {
-    "seneca": "~0.5.0"
+    "seneca": "~0.5.2",
+    "seneca-cart": "~0.1.1",
+    "seneca-engage": "~0.1.1"
   }
 }
