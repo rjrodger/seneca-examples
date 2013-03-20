@@ -10,6 +10,7 @@ var argv    = require('optimist').argv
 
 // create a seneca instance
 var seneca  = require('seneca')()
+seneca.use('config',{file:'./config.mine.js'})
 
 
 var conf = {
@@ -36,6 +37,8 @@ app.use(express.query())
 app.use(express.bodyParser())
 app.use(express.methodOverride())
 app.use(express.json())
+
+app.use(express.session({secret:'seneca'}))
 
 app.use(express.static(__dirname + '/public'))
 
