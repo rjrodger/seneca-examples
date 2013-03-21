@@ -10,6 +10,10 @@ var argv    = require('optimist').argv
 
 // create a seneca instance
 var seneca  = require('seneca')()
+
+// load configuration for plugins
+// top level properties match plugin names
+// copy template config.template.js to config.mine.js and customize
 seneca.use('config',{file:'./config.mine.js'})
 
 
@@ -24,7 +28,10 @@ seneca.use('user')
 // the auth plugin handles HTTP authentication
 seneca.use('auth',{
   // redirects after login are needed for traditional multi-page web apps
-  redirect:{login:{win:'/account',fail:'/login#failed'}}
+  redirect:{
+    login:{win:'/account',fail:'/login#failed'},
+    register:{win:'/account',fail:'/#failed'},
+  }
 })
 
 
