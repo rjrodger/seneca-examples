@@ -1,8 +1,8 @@
 {
-  "name": "shopping-cart-seneca-example",
+  "name": "plugin-web-seneca-example",
   "version": "0.0.1",
-  "description": "Seneca shopping cart example",
-  "subdomain": "shopping-cart-seneca-example",
+  "description": "Plugin web example",
+  "subdomain": "plugin-web-seneca-example",
   "main": "app.js",
   "scripts": {
     "start": "app.js"
@@ -16,10 +16,7 @@
     "ejs": "~0.8.3",
     "ejs-locals": "~1.0.2",
     "seneca": "~0.5.5",
-    "seneca-user": "~0.2.0",
-    "seneca-auth": "~0.2.0",
-    "seneca-cart": "~0.1.1",
-    "seneca-engage": "~0.1.1"
+    "connect": "~2.7.4"
   },
   "files": [
     "app.js"
