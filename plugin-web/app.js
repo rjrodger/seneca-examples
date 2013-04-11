@@ -20,9 +20,10 @@ var seneca  = require('seneca')()
 
 // use the example plugins
 // they are all sub folders
+seneca.use('./page-plugin')
 seneca.use('./api-plugin')
 seneca.use('./quick-plugin')
-seneca.use('./page-plugin')
+
 
 
 
@@ -41,12 +42,6 @@ app.use(express.static(__dirname + '/public'))
 // add in the sencea middleware
 // this is how the seneca plugins can respond to HTTP requests
 app.use( seneca.service() )
-
-
-// express views for the dynamic pages
-app.engine('ejs',require('ejs-locals'))
-app.set('views', __dirname + '/views')
-app.set('view engine','ejs')
 
 
 // start the app!
