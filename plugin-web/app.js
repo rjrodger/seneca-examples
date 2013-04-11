@@ -18,9 +18,13 @@ var conf = {
 // create a seneca instance
 var seneca  = require('seneca')()
 
-// use the example plugin
+// use the example plugins
 // they are all sub folders
+seneca.use('./api-plugin')
+seneca.use('./quick-plugin')
 seneca.use('./page-plugin')
+
+
 
 
 // set up express
