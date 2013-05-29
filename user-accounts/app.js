@@ -18,7 +18,7 @@ seneca.use('config',{file:'./config.mine.js'})
 
 
 var conf = {
-  port: argv.p || 80
+  port: argv.p || 3000
 }
 
 // use the user and auth plugins

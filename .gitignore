@@ -17,3 +17,6 @@ node_modules
 .DS_Store
 
 config.mine.js
+
+data-entities/json-data
+data-entities/level-data

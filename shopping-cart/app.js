@@ -9,7 +9,7 @@ var argv    = require('optimist').argv
 
 
 var conf = {
-  port: argv.p || 80
+  port: argv.p || 3000
 }
 
 
