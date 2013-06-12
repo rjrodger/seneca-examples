@@ -86,13 +86,6 @@ app.get('/cancelled', function(req, res){
 })
 
 
-// when rendering the account page, use the req.seneca.user object
-// to get user details. This is automatically set up by the auth plugin
-app.get('/account', function(req, res){
-  res.render('account.ejs',{locals:{user:req.seneca.user}})
-})
-
-
 // create a HTTP server using the core Node API
 // this lets the admin plugin use web sockets
 var server = http.createServer(app)
