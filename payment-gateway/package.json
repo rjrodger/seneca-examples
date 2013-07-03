@@ -1,29 +1,29 @@
 {
-  "name": "user-accounts-seneca-example",
-  "version": "0.0.4",
-  "description": "User accounts example",
-  "subdomain": "user-accounts-seneca-example",
+  "name": "seneca-pay-example",
+  "version": "0.0.1",
+  "description": "Seneca payment module example",
+  "subdomain": "seneca-pay-example",
   "main": "app.js",
   "scripts": {
     "start": "app.js"
   },
   "repository": "",
-  "author": "Richard Rodger",
+  "author": "Cristian iantor",
   "license": "MIT",
   "dependencies": {
     "express": "~3.1.0",
     "optimist": "~0.3.5",
+    "node-uuid": "~1.4.0",
     "ejs": "~0.8.3",
     "ejs-locals": "~1.0.2",
-    "node-uuid": "~1.4.0",
     "seneca": "~0.5.x",
-    "seneca-user": "~0.2.1",
-    "seneca-auth": "~0.2.4"
+    "seneca-pay": "~0.0.1",
+    "seneca-stripe-pay": "~0.0.1"
   },
   "files": [
     "app.js"
   ],
   "engines": {
-    "node": "0.8.x"
+    "node": "0.10.x"
   }
 }
