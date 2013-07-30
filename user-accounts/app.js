@@ -14,7 +14,7 @@ var seneca  = require('seneca')()
 // load configuration for plugins
 // top level properties match plugin names
 // copy template config.template.js to config.mine.js and customize
-seneca.use('config',{file:'./config.mine.js'})
+seneca.use('options','config.mine.js')
 
 
 var conf = {
@@ -51,7 +51,7 @@ app.use(express.static(__dirname + '/public'))
 
 
 // add any middleware provided by seneca plugins
-app.use( seneca.service() )
+app.use( seneca.export('web') )
 
 
 // some express views
