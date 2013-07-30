@@ -41,13 +41,13 @@ app.use(express.json())
 app.use(express.static(__dirname + '/public'))
 
 // expose the shopping cart api
-// the seneca.service method returns a single function with the signature
+// the seneca.export('web') method returns a single function with the signature
 // function(req,res,next) that can be used with connect or express
 // this service method wraps up all the plugin HTTP endpoints
 // seneca includes the connect utility plugin by default, which
 // sets the special arguments req$ and res$ on all seneca calls, allowing
 // seneca actions to access the current HTTP req and res objects 
-app.use( seneca.service() )
+app.use( seneca.export('web') )
 
 
 // express views for the cart pags
