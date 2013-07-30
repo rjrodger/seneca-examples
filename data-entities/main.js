@@ -7,7 +7,8 @@ var seneca = require('seneca')()
 seneca.use('jsonfile-store',{ folder:'json-data', map:{'-/json/-':'*'}})
 seneca.use('level-store',{ folder:'level-data', map:{'-/level/-':'*'}})
 
-seneca.ready(function(err,seneca){
+seneca.ready(function(err){
+  var seneca = this
 
   ;seneca
     .make$('json','foo',{propA:'val1',propB:'val2'})

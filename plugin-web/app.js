@@ -41,7 +41,7 @@ app.use(express.static(__dirname + '/public'))
 
 // add in the sencea middleware
 // this is how the seneca plugins can respond to HTTP requests
-app.use( seneca.service() )
+app.use( seneca.export('web') )
 
 
 // start the app!
