@@ -35,6 +35,9 @@ seneca.use('auth',{
 })
 
 
+seneca.use('account')
+
+
 // use the express module in the normal way
 var app = express()
 app.enable('trust proxy')

@@ -8,9 +8,9 @@
   "author": "Richard Rodger",
   "license": "MIT",
   "dependencies": {
-    "seneca": "0.5.x",
-    "seneca-level-store": "0.1.x",
-    "seneca-jsonfile-store": "0.1.x"
+    "seneca": "*",
+    "seneca-level-store": "*",
+    "seneca-jsonfile-store": "*"
   },
   "engines": {
     "node": ">=0.8.x"

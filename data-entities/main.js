@@ -4,8 +4,8 @@
 
 var seneca = require('seneca')()
 
-seneca.use('jsonfile-store',{ folder:'json-data', map:{'-/json/-':'*'}})
-seneca.use('level-store',{ folder:'level-data', map:{'-/level/-':'*'}})
+seneca.use( 'jsonfile-store', { folder:'json-data',  map:{'-/json/-':'*'}})
+seneca.use( 'level-store',    { folder:'level-data', map:{'-/level/-':'*'}})
 
 seneca.ready(function(err){
   var seneca = this
