@@ -22,6 +22,7 @@ var opts = require('./config.mine.json')
 
 //does the "options" "plugin" actuall work?
 //I'm not sure... maybe there is some voodoo, pass in options anyway.
+
 seneca.use('options', opts)
 
 
@@ -29,16 +30,16 @@ var conf = {
   port: argv.p || 3000
 }
 
-seneca.use('mongo-store',{
-  name:'seneca-pay',
-  host:'127.0.0.1',
-  port:27017
-})
+//seneca.use('mongo-store',{
+//  name:'seneca-pay',
+//  host:'127.0.0.1',
+//  port:27017
+//})
 
 seneca.use(require('seneca-pay'), opts.pay)
 //seneca.use(require('seneca-pay'))
 
-seneca.use(require('seneca-stripe-pay'), opts.pay)
+seneca.use(require('seneca-stripe-pay'))
 
 
 // use the express module in the normal way
