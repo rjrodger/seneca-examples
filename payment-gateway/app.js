@@ -17,23 +17,28 @@ var seneca  = require('seneca')({
 // load configuration for plugins
 // top level properties match plugin names
 // copy template config.template.js to config.mine.js and customize
-seneca.use('config',{file:'./config.mine.js'})
+//seneca.use('options', {from:'./config.mine.json'})
+var opts = require('./config.mine.json')
+
+//does the "options" "plugin" actuall work?
+//I'm not sure... maybe there is some voodoo, pass in options anyway.
+seneca.use('options', opts)
 
 
 var conf = {
   port: argv.p || 3000
 }
 
-/*
 seneca.use('mongo-store',{
   name:'seneca-pay',
   host:'127.0.0.1',
   port:27017
 })
-*/
 
-seneca.use('seneca-pay')
-seneca.use('seneca-stripe-pay')
+seneca.use(require('seneca-pay'), opts.pay)
+//seneca.use(require('seneca-pay'))
+
+seneca.use(require('seneca-stripe-pay'), opts.pay)
 
 
 // use the express module in the normal way
