@@ -1,0 +1,20 @@
+{
+  "pay": {  
+    "paypal": {
+      "useSandbox": false,
+      "username": "PAYPAL_API_USERNAME",
+      "password": "PAYPAL_API_PASSWORD",
+      "signature": "PAYPAL_API_SIGNATURE"
+    },
+    "stripe": {
+      "secretKey": "sk_test_4dLEDX0Riic9do96py1pO7jx",
+      "publishableKey": "pk_test_0f98rczFghTQp2s0t0MNr9rf",
+      "showAddress": true
+    },
+    "redirect": {
+      "hostUrl": "http://localhost:3000",
+      "success": "/completed",
+      "fail": "/cancelled"
+    }
+  }
+}
