@@ -17,13 +17,8 @@
     "ejs": "~0.8.3",
     "ejs-locals": "~1.0.2",
     "seneca": "~0.5.x",
-
-  "seneca-pay":
-  "git:github.com/dominictarr/seneca-pay.git#ef81eaed04312cd7dba04d0cdfd7fd15120f7be4",
-
-  "seneca-stripe-pay": 
-  "git:github.com/dominictarr/seneca-stripe-pay.git#b7ba4b289c923a12cda2e5705aa73acde8dafa3b8",
-
+    "seneca-pay": "0.0.3",
+    "seneca-stripe-pay": "0.0.3",
     "range-parser": "0.0.4",
     "mime": "~1.2.11"
   },
