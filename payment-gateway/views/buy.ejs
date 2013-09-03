@@ -1,0 +1,66 @@
+<% layout('layout') -%>
+
+<h1>Buy some</h1>
+<form id="buy" method="post">
+
+<p>
+<label for="amount">Amount:</label><br />
+<input id="amount" name="amount" value="<%-amount%>" />
+</p>
+
+<input type="hidden" id="description" name="description" value="<%-description%>" />
+<input type="hidden" id="currencyCode" name="currencyCode" value="<%-currencyCode%>" />
+
+<!-- leave this empty and a refno will be generated automatically -->
+<input type="hidden" id="refno" name="refno" value="<%-refno%>" />
+
+<p>
+<button id="postPayPal">PayPal</button>
+<button id="postStripe">Stripe</button>
+<button id="openStripe">Stripe JS</button>
+</p>
+
+<script src="https://checkout.stripe.com/v2/checkout.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+
+<script>
+  $('#postPayPal').click(function(){
+    $('form').attr('action', '/pay/paypal-express/pay');
+    $('form').submit()
+  })
+
+  $('#postStripe').click(function(){
+    $('form').attr('action', '/pay/stripe-checkout/pay');
+    $('form').submit()
+  })
+
+  $('#openStripe').click(function(){
+    $('form').attr('action', '/pay/stripe-checkout/callback-complete');
+    var token = function(res){
+      var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+      $('form').append($input).submit();
+    };
+
+    StripeCheckout.open({
+      key:         'pk_test_1ccNWMm1bVQuLlNb0Hww4GOb',
+      address:     true,
+      amount:      parseFloat($('#amount').val())*100,
+      currency:    $('#currencyCode').val(),
+      name:        'The magic store',
+      description: $('#description').val(),
+      panelLabel:  'Checkout',
+      token:       token,
+      closed:      stripeClosed
+    });
+
+    return false;
+  })
+
+  var stripeClosed = function() {
+    //
+  }
+
+</script>
+
+</form>
+

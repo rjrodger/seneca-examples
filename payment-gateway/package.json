@@ -1,0 +1,31 @@
+{
+  "name": "seneca-pay-example",
+  "version": "0.0.1",
+  "description": "Seneca payment module example",
+  "subdomain": "seneca-pay-example",
+  "main": "app.js",
+  "scripts": {
+    "start": "app.js"
+  },
+  "repository": "",
+  "author": "Cristian iantor",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~3.1.0",
+    "optimist": "~0.3.5",
+    "node-uuid": "~1.4.0",
+    "ejs": "~0.8.3",
+    "ejs-locals": "~1.0.2",
+    "seneca": "~0.5.x",
+    "seneca-pay": "0.0.3",
+    "seneca-stripe-pay": "0.0.3",
+    "range-parser": "0.0.4",
+    "mime": "~1.2.11"
+  },
+  "files": [
+    "app.js"
+  ],
+  "engines": {
+    "node": "0.10.x"
+  }
+}
