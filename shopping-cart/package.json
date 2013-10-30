@@ -15,11 +15,12 @@
     "optimist": "~0.3.5",
     "ejs": "~0.8.3",
     "ejs-locals": "~1.0.2",
-    "seneca": "~0.5.9",
-    "seneca-user": "~0.2.2",
-    "seneca-auth": "~0.2.5",
+    "seneca": "~0.5.14",
+    "seneca-user": "~0.2.6",
+    "seneca-auth": "~0.2.7",
     "seneca-cart": "~0.1.1",
-    "seneca-engage": "~0.1.1"
+    "seneca-engage": "~0.1.1",
+    "seneca-admin": "~0.1.2"
   },
   "files": [
     "app.js"
