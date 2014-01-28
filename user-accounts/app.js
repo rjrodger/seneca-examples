@@ -35,9 +35,6 @@ seneca.use('auth',{
 })
 
 
-seneca.use('account')
-
-
 // use the express module in the normal way
 var app = express()
 app.enable('trust proxy')
@@ -54,6 +51,8 @@ app.use(express.static(__dirname + '/public'))
 
 
 // add any middleware provided by seneca plugins
+
+
 app.use( seneca.export('web') )
 
 
@@ -72,6 +71,9 @@ app.get('/login', function(req, res){
 app.get('/account', function(req, res){
   res.render('account.ejs',{locals:{user:req.seneca.user}})
 })
+
+
+
 
 
 // create some test accounts

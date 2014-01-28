@@ -1,6 +1,6 @@
 {
   "name": "user-accounts-seneca-example",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "User accounts example",
   "subdomain": "user-accounts-seneca-example",
   "main": "app.js",
@@ -11,19 +11,16 @@
   "author": "Richard Rodger",
   "license": "MIT",
   "dependencies": {
-    "express": "~3.1.0",
-    "optimist": "~0.3.5",
-    "ejs": "~0.8.3",
-    "ejs-locals": "~1.0.2",
-    "seneca": "~0.5.14",
-    "seneca-user": "~0.2.6",
-    "seneca-auth": "~0.2.7",
-    "seneca-admin": "~0.1.2"
+    "express": "3.4.x",
+    "optimist": "0.6.x",
+    "ejs": "0.8.x",
+    "ejs-locals": "1.x",
+    "seneca": "0.5.x",
+    "seneca-user": "0.2.x",
+    "seneca-auth": "0.2.x",
+    "seneca-admin": "0.1.x"
   },
   "files": [
     "app.js"
-  ],
-  "engines": {
-    "node": "0.8.x"
-  }
+  ]
 }
