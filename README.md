@@ -13,3 +13,7 @@ example for a fully commented walk through of the example.
    * data-entities: Using multiple databases at the same time for different kinds of entities
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rjrodger/seneca-examples/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
