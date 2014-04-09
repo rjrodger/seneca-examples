@@ -16,6 +16,9 @@ var conf = {
 // create a seneca instance
 var seneca  = require('seneca')()
 
+seneca.use('mem-store',{web:{dump:true}})
+
+
 // use the engage plugin to store extended user sessions
 // these are known as "engagements"
 // this means that user's shopping carts will be saved and still active if they
@@ -62,12 +65,6 @@ var cart_pin   = seneca.pin({role:'cart',cmd:'*'})
 var engage_pin = seneca.pin({role:'engage',cmd:'*'})
 
 
-// the engage plugin can wrap calls to other actions
-// any matching argument keys are given values from the engagement store
-// in this case, the cart id (if it exists) for the current user is taken from
-// the store and used to set the value of the cart argument key 
-engage_pin.wrap( {pin:{role:'cart',cmd:'*'}, keys:['cart']} )
-
 
 // a utility method
 function formatprice(price) {
@@ -75,25 +72,70 @@ function formatprice(price) {
 }
 
 
-app.get('/', function(req, res, next){
-  req.seneca.act('role:cart,cmd:get',function(err,out) {
+// gets cart from engagement, and sets it after changes
+function handlecart(req,res,next,action) {
+  req.seneca.act('role:engage,cmd:get,key:cart',function(err,out) {
     if( err ) return next(err);
-    res.render('index.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+
+    action(out.value, function(cart){
+      req.seneca.act('role:engage,cmd:set,key:cart',{value:cart})
+    })
+  })
+}
+
+
+app.get('/', function(req,res,next) {
+  handlecart( req,res,next, function( cart, end ) {
+    req.seneca.act('role:cart,cmd:get',{cart:cart},function(err,out) {
+      if( err ) return next(err);
+      
+      end(out.cart)
+      res.render('index.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+    })
   })
 })
 
 
 app.get('/cart', function(req,res,next){
-  req.seneca.act('role:cart,cmd:get',function(err,out) {
-    if( err ) return next(err);
-    res.render('cart.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+  handlecart( req,res,next, function( cart, end ) {
+    req.seneca.act('role:cart,cmd:get',{cart:cart},function(err,out) {
+      if( err ) return next(err);
+      
+      end(out.cart)
+      res.render('cart.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+    })
   })
 })
 
+
 app.get('/checkout', function(req,res,next){
-  req.seneca.act('role:cart,cmd:get',function(err,out) {
-    if( err ) return next(err);
-    res.render('checkout.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+  handlecart( req,res,next, function( cart, end ) {
+    req.seneca.act('role:cart,cmd:get',{cart:cart},function(err,out) {
+      if( err ) return next(err);
+
+      end(out.cart)
+      res.render('checkout.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+    })
+  })
+})
+
+
+// ensure that cart actions get the cart from the engagement
+seneca.wrap({role:'cart',cmd:'*'},function(args,done){
+  var seneca = this
+
+  // grab the cart from the engagement
+  handlecart( args.req$, args.res$, done, function(cart,end){
+
+    // set the cart parameter for the cart actions
+    args.cart = cart
+    seneca.prior(args,function(err,out){
+      if(err) return done(err);
+
+      // save the updated cart
+      end(cart)
+      done(null,out)
+    })
   })
 })
 
@@ -105,6 +147,7 @@ server.listen(conf.port)
 
 // unlike the user-accounts example, the local:true
 // setting means anybody can access the admin panel from localhost
+seneca.use('data-editor',{admin:{local:true}})
 seneca.use('admin',{server:server,local:true})
 
 

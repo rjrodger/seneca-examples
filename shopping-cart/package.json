@@ -20,12 +20,7 @@
     "seneca-auth": "~0.2.7",
     "seneca-cart": "~0.1.1",
     "seneca-engage": "~0.1.1",
+    "seneca-data-editor": "~0.1.4",
     "seneca-admin": "~0.1.2"
-  },
-  "files": [
-    "app.js"
-  ],
-  "engines": {
-    "node": ">=0.8.x"
   }
 }

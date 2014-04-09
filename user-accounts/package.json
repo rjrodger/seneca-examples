@@ -11,16 +11,13 @@
   "author": "Richard Rodger",
   "license": "MIT",
   "dependencies": {
-    "express": "3.4.x",
-    "optimist": "0.6.x",
-    "ejs": "0.8.x",
-    "ejs-locals": "1.x",
-    "seneca": "0.5.x",
-    "seneca-user": "0.2.x",
-    "seneca-auth": "0.2.x",
-    "seneca-admin": "0.1.x"
-  },
-  "files": [
-    "app.js"
-  ]
+    "express": "~3.5.1",
+    "optimist": "~0.6.1",
+    "ejs": "~1.0.0",
+    "ejs-locals": "~1.0.2",
+    "seneca": "~0.5.15",
+    "seneca-user": "~0.2.7",
+    "seneca-auth": "~0.2.9",
+    "seneca-admin": "~0.1.2"
+  }
 }
