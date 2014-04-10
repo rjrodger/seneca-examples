@@ -18,6 +18,9 @@
     "seneca": "~0.5.15",
     "seneca-user": "~0.2.7",
     "seneca-auth": "~0.2.9",
-    "seneca-admin": "~0.1.2"
+    "seneca-admin": "~0.1.2",
+    "seneca-jsonrest-api": "~0.2.1",
+    "seneca-perm": "~0.1.2",
+    "seneca-data-editor": "~0.1.4"
   }
 }

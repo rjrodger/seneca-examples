@@ -92,5 +92,6 @@ server.listen(conf.port)
 
 // visit http://localhost[:port]/admin to see the admin page
 // you'll need to logged in as an admin - user 'a1' above
+seneca.use('data-editor')
 seneca.use('admin',{server:server})
 
