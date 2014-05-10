@@ -1,0 +1,18 @@
+{
+  "name": "micro-services",
+  "version": "0.0.0",
+  "description": "Seneca micro-services example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "seneca-user": "^0.2.8",
+    "seneca-auth": "^0.2.9",
+    "seneca": "^0.5.17",
+    "express": "^4.1.1",
+    "body-parser": "^1.0.2"
+  }
+}

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012-2013 Richard Rodger, MIT License */
+/* Copyright (c) 2012-2014 Richard Rodger, MIT License */
 "use strict";
 
 
@@ -9,7 +9,7 @@ var argv    = require('optimist').argv
 
 
 // create a seneca instance
-var seneca  = require('seneca')()
+var seneca  = require('seneca')({timeout:300})
 
 // load configuration for plugins
 // top level properties match plugin names
@@ -74,7 +74,7 @@ app.get('/account', function(req, res){
 
 
 
-
+seneca.ready(function(){
 
 // create some test accounts
 // the "pin" creates a more convenient api, avoiding the need for 
@@ -83,6 +83,8 @@ var u = seneca.pin({role:'user',cmd:'*'})
 u.register({nick:'u1',name:'nu1',email:'u1@example.com',password:'u1',active:true})
 u.register({nick:'u2',name:'nu2',email:'u2@example.com',password:'u2',active:true})
 u.register({nick:'a1',name:'na1',email:'a1@example.com',password:'a1',active:true,admin:true})
+
+})
 
 
 // create a HTTP server using the core Node API
