@@ -10,7 +10,7 @@ module.exports = function( options, register ) {
     name:'api',
 
     // you need a middleware function to look for a matching URL
-    service: this.httprouter(function(app){
+    service: this.export('web/httprouter')(function(app){
       app.get("/api/:action",function(req,res){
 
         // respond manually
