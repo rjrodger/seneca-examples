@@ -1,6 +1,6 @@
 {
   "name": "data-entities-seneca-example",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Data entities example",
   "subdomain": "data-entities-seneca-example",
   "main": "main.js",
@@ -8,8 +8,8 @@
   "author": "Richard Rodger",
   "license": "MIT",
   "dependencies": {
-    "seneca": "*",
-    "seneca-level-store": "*",
-    "seneca-jsonfile-store": "*"
+    "seneca": "~0.5.18",
+    "seneca-level-store": "~0.1.3",
+    "seneca-jsonfile-store": "~0.1.7"
   }
 }
