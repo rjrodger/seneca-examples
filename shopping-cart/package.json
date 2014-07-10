@@ -1,6 +1,6 @@
 {
   "name": "shopping-cart-seneca-example",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Seneca shopping cart example",
   "subdomain": "shopping-cart-seneca-example",
   "main": "app.js",
@@ -15,12 +15,12 @@
     "optimist": "~0.3.5",
     "ejs": "~0.8.3",
     "ejs-locals": "~1.0.2",
-    "seneca": "~0.5.14",
-    "seneca-user": "~0.2.6",
-    "seneca-auth": "~0.2.7",
-    "seneca-cart": "~0.1.1",
-    "seneca-engage": "~0.1.1",
-    "seneca-data-editor": "~0.1.4",
-    "seneca-admin": "~0.1.2"
+    "seneca": "~0.5.18",
+    "seneca-user": "~0.2.10",
+    "seneca-auth": "~0.2.10",
+    "seneca-cart": "~0.1.2",
+    "seneca-engage": "~0.2.1",
+    "seneca-data-editor": "~0.1.6",
+    "seneca-admin": "~0.1.4"
   }
 }
