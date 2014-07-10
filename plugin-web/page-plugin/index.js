@@ -4,7 +4,7 @@
 
 // use the connect module to deliver the static pages
 var connect  = require('connect')
-
+var serveStatic = require('serve-static')
 
 
 module.exports = function( options, register ) {
@@ -23,7 +23,7 @@ module.exports = function( options, register ) {
   var app = connect()
 
   // just serve static content from the web folder
-  app.use(connect.static(__dirname+'/web'))
+  app.use(serveStatic(__dirname+'/web'))
 
 
   // register this plugin with seneca
