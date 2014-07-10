@@ -7,7 +7,7 @@ var connect  = require('connect')
 var serveStatic = require('serve-static')
 
 
-module.exports = function( options, register ) {
+module.exports = function( options ) {
 
   // setup the options
   // by default, place this content under the /page URL
@@ -26,25 +26,25 @@ module.exports = function( options, register ) {
   app.use(serveStatic(__dirname+'/web'))
 
 
-  // register this plugin with seneca
-  register( null, {
-    name:'page',
 
-    // you need a middleware function to trigger the local connect app
-    service: function(req,res,next) {
+  // you need a middleware function to trigger the local connect app
+  this.act('role:web',{use:function(req,res,next) {
 
-      // look for that URL prefix, by default /page
-      if( 0 == req.url.indexOf(options.prefix) ) {
+    // look for that URL prefix, by default /page
+    if( 0 == req.url.indexOf(options.prefix) ) {
 
-        // remove the prefix to avoid confusing the local connect app
-        req.url = req.url.substring(options.prefix.length)
-
-        // and delegate the work to the local connect app
-        app( req, res, next )
-      }
-
-      // else this request is nothing to do with us!
-      else next()
+      // remove the prefix to avoid confusing the local connect app
+      req.url = req.url.substring(options.prefix.length)
+      
+      // and delegate the work to the local connect app
+      app( req, res, next )
     }
-  })
+
+    // else this request is nothing to do with us!
+    else next()
+  }})
+
+
+  // register this plugin with seneca
+  return { name:'page' };
 }
