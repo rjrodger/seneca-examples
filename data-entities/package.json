@@ -8,7 +8,7 @@
   "author": "Richard Rodger",
   "license": "MIT",
   "dependencies": {
-    "seneca": "git://github.com/rjrodger/seneca.git#0.5.18",
+    "seneca": "0.5.18",
     "seneca-level-store": "0.1.3",
     "seneca-jsonfile-store": "0.1.7"
   }
