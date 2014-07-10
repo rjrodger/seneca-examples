@@ -12,7 +12,7 @@ load, etc).
 
 The creation and saving of data entities occur inside the seneca.ready
 callback. This ensures that database connections are open before
-operations are performed. The context object of the readt callback
+operations are performed. The context object of the ready callback
 (this) is the current seneca instance.
 
 The example code creates new entities using seneca.make$, of type
