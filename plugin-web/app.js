@@ -39,7 +39,7 @@ app.use(express.json())
 // this is the top level static content
 app.use(express.static(__dirname + '/public'))
 
-// add in the sencea middleware
+// add in the seneca middleware
 // this is how the seneca plugins can respond to HTTP requests
 app.use( seneca.export('web') )
 
