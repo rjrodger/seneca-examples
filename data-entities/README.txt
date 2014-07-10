@@ -21,9 +21,6 @@ The example code creates new entities using seneca.make$, of type
 The ; prefix is used as a code marker to indicate a callback chain
 that has not been indented, to save horizontal space.
 
-You can read more about using Seneca to interact with data entities at
-http://senecajs.org/data-entities.html.
-
 
 Setup:
 $ npm install
