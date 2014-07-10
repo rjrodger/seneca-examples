@@ -4,6 +4,9 @@
 
 // use the http://expressjs.com web framework
 var express = require('express')
+var bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
+var methodOverride = require('method-override')
 
 // use https://github.com/substack/node-optimist for parsing the command line
 var argv    = require('optimist').argv
@@ -30,11 +33,11 @@ seneca.use('./quick-plugin')
 
 // set up express
 var app = express()
-app.use(express.cookieParser())
+app.use(cookieParser())
 app.use(express.query())
-app.use(express.bodyParser())
-app.use(express.methodOverride())
-app.use(express.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(methodOverride())
+app.use(bodyParser.json())
 
 // this is the top level static content
 app.use(express.static(__dirname + '/public'))
