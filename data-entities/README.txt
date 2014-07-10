@@ -12,7 +12,7 @@ load, etc).
 
 The creation and saving of data entities occur inside the seneca.ready
 callback. This ensures that database connections are open before
-operations are performed. The context object of the ready callback
+operations are performed. The context object of the readt callback
 (this) is the current seneca instance.
 
 The example code creates new entities using seneca.make$, of type
@@ -20,9 +20,6 @@ The example code creates new entities using seneca.make$, of type
 
 The ; prefix is used as a code marker to indicate a callback chain
 that has not been indented, to save horizontal space.
-
-You can read more about using Seneca to interact with data entities at
-http://senecajs.org/data-entities.html.
 
 
 Setup:

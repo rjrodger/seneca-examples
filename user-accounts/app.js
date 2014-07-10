@@ -4,12 +4,17 @@
 
 var http = require('http')
 
-var express = require('express')
-var argv    = require('optimist').argv
+var express        = require('express')
+var bodyParser     = require('body-parser')
+var cookieParser   = require('cookie-parser')
+var methodOverride = require('method-override')
+var session        = require('express-session')
+var serveStatic    = require('serve-static')
+var argv           = require('optimist').argv
 
 
 // create a seneca instance
-var seneca  = require('seneca')({timeout:300})
+var seneca  = require('seneca')()
 
 // load configuration for plugins
 // top level properties match plugin names
@@ -39,15 +44,15 @@ seneca.use('auth',{
 var app = express()
 app.enable('trust proxy')
 
-app.use(express.cookieParser())
+app.use(cookieParser())
 app.use(express.query())
-app.use(express.bodyParser())
-app.use(express.methodOverride())
-app.use(express.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(methodOverride())
+app.use(bodyParser.json())
 
-app.use(express.session({secret:'seneca'}))
+app.use(session({secret:'seneca'}))
 
-app.use(express.static(__dirname + '/public'))
+app.use(serveStatic(__dirname + '/public'))
 
 
 // add any middleware provided by seneca plugins

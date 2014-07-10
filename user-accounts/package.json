@@ -11,16 +11,21 @@
   "author": "Richard Rodger",
   "license": "MIT",
   "dependencies": {
-    "express": "~3.5.1",
+    "express": "~4.5.1",
+    "body-parser": "~1.4.3",
+    "cookie-parser": "~1.3.2",
+    "method-override": "~2.1.0",
+    "express-session": "~1.6.4",
+    "serve-static": "~1.3.1",
     "optimist": "~0.6.1",
     "ejs": "~1.0.0",
     "ejs-locals": "~1.0.2",
-    "seneca": "~0.5.15",
-    "seneca-user": "~0.2.7",
-    "seneca-auth": "~0.2.9",
-    "seneca-admin": "~0.1.2",
+    "seneca": "~0.5.18",
+    "seneca-user": "~0.2.10",
+    "seneca-auth": "~0.2.10",
+    "seneca-admin": "~0.1.4",
     "seneca-jsonrest-api": "~0.2.1",
-    "seneca-perm": "~0.1.2",
-    "seneca-data-editor": "~0.1.4"
+    "seneca-perm": "~0.1.10",
+    "seneca-data-editor": "~0.1.6"
   }
 }
