@@ -14,28 +14,31 @@ var argv           = require('optimist').argv
 
 
 // create a seneca instance
-var seneca  = require('seneca')()
+var seneca = require('seneca')()
 
 // load configuration for plugins
 // top level properties match plugin names
 // copy template config.template.js to config.mine.js and customize
-seneca.use('options','config.mine.js')
+var options = seneca.options('config.mine.js')
 
-
-var conf = {
-  port: argv.p || 3000
-}
 
 // use the user and auth plugins
 // the user plugin gives you user account business logic
 seneca.use('user')
 
+
 // the auth plugin handles HTTP authentication
 seneca.use('auth',{
   // redirects after login are needed for traditional multi-page web apps
   redirect:{
-    login:{win:'/account',fail:'/login#failed'},
-    register:{win:'/account',fail:'/#failed'},
+    login: {
+      win:  '/account',
+      fail: '/login#failed'
+    },
+    register: {
+      win:  '/account',
+      fail: '/#failed'
+    },
   }
 })
 
@@ -50,14 +53,14 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(methodOverride())
 app.use(bodyParser.json())
 
+// Use in-memory sessions so OAuth will work
+// In production, use redis or similar
 app.use(session({secret:'seneca'}))
 
 app.use(serveStatic(__dirname + '/public'))
 
 
-// add any middleware provided by seneca plugins
-
-
+// add seneca middleware
 app.use( seneca.export('web') )
 
 
@@ -79,8 +82,6 @@ app.get('/account', function(req, res){
 
 
 
-seneca.ready(function(){
-
 // create some test accounts
 // the "pin" creates a more convenient api, avoiding the need for 
 // a full action specification: seneca.act( {role:'user', cmd:'register', ... } )
@@ -89,13 +90,12 @@ u.register({nick:'u1',name:'nu1',email:'u1@example.com',password:'u1',active:tru
 u.register({nick:'u2',name:'nu2',email:'u2@example.com',password:'u2',active:true})
 u.register({nick:'a1',name:'na1',email:'a1@example.com',password:'a1',active:true,admin:true})
 
-})
 
 
 // create a HTTP server using the core Node API
 // this lets the admin plugin use web sockets
 var server = http.createServer(app)
-server.listen(conf.port)
+server.listen( options.main.port )
 
 // visit http://localhost[:port]/admin to see the admin page
 // you'll need to logged in as an admin - user 'a1' above
