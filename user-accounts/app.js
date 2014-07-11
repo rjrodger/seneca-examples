@@ -38,7 +38,7 @@ seneca.use('auth',{
     register: {
       win:  '/account',
       fail: '/#failed'
-    },
+    }
   }
 })
 
@@ -95,7 +95,7 @@ u.register({nick:'a1',name:'na1',email:'a1@example.com',password:'a1',active:tru
 // create a HTTP server using the core Node API
 // this lets the admin plugin use web sockets
 var server = http.createServer(app)
-server.listen( options.main.port )
+server.listen( options.main ? options.main.port : 3000 )
 
 // visit http://localhost[:port]/admin to see the admin page
 // you'll need to logged in as an admin - user 'a1' above
