@@ -16,6 +16,10 @@ var conf = {
 // create a seneca instance
 var seneca  = require('seneca')()
 
+
+// enable the /mem-store/dump HTTP end point
+// this lets you see the entire contents of the database as a JSON object
+// in the browser - very useful for debugging!
 seneca.use('mem-store',{web:{dump:true}})
 
 

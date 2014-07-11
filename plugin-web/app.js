@@ -1,15 +1,15 @@
-/* Copyright (c) 2013 Richard Rodger, MIT License */
+/* Copyright (c) 2013-2014 Richard Rodger, MIT License */
 "use strict";
 
 
 // use the http://expressjs.com web framework
-var express = require('express')
-var bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser')
+var express        = require('express')
+var bodyParser     = require('body-parser')
+var cookieParser   = require('cookie-parser')
 var methodOverride = require('method-override')
 
 // use https://github.com/substack/node-optimist for parsing the command line
-var argv    = require('optimist').argv
+var argv = require('optimist').argv
 
 
 // setup the configuration

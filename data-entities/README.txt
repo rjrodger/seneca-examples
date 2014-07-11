@@ -30,12 +30,4 @@ Run with:
 $ node main.js
 
 
-Output:
-
-2014-01-27T15:27:47.914Z	INFO	hello	Seneca/*.*.*/v12ini
-$-/json/foo:{id=yhmod6;propA=val1;propB=val2}
-$-/level/bar:{id=4ef9b775-041e-42e1-9635-c3999043fcbb;propA=val3;propB=val4}
-
-
-
 

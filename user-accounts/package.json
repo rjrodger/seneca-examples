@@ -1,6 +1,6 @@
 {
   "name": "user-accounts-seneca-example",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "User accounts example",
   "subdomain": "user-accounts-seneca-example",
   "main": "app.js",

@@ -10,12 +10,15 @@ express app via app.use( seneca.export('web') ).
 Each of the three plugins is housed in its own directory.  Seneca plugins
 export a function with a signature
 	
-	function myPlugin( options, register ) { ... }
+	function myPlugin( options ) { ... }
 
-where options are passed from the call to seneca.use, and the optional
-register callback attaches the plugin to the seneca module.  When working
-with middleware plugins, the service method is called by the web module,
-passing the typical request, response, and callback arguments.
+where options are passed from the call to seneca.use. Return a description object to give your plugin an explicit name. For example:
+
+        return { name:'foo' }
+
+When working with middleware plugins, use the role:web,use:[Function]
+pattern to specify a middle function, acception the usual request,
+response, and next arguments.
 
 The example code in the quick-plugin simply returns a JSON string based
 on the request URL.
