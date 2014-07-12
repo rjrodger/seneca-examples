@@ -4,7 +4,12 @@
 
 var http = require('http')
 
-var express = require('express')
+var express        = require('express')
+var bodyParser     = require('body-parser')
+var cookieParser   = require('cookie-parser')
+var methodOverride = require('method-override')
+var session        = require('express-session')
+var serveStatic    = require('serve-static')
 var argv    = require('optimist').argv
 
 
@@ -20,6 +25,7 @@ var seneca  = require('seneca')()
 // enable the /mem-store/dump HTTP end point
 // this lets you see the entire contents of the database as a JSON object
 // in the browser - very useful for debugging!
+// Go to http://localhost:3333/mem-store/dump to debug db contents
 seneca.use('mem-store',{web:{dump:true}})
 
 
@@ -39,13 +45,13 @@ seneca.use('cart')
 var app = express()
 app.enable('trust proxy')
 
-app.use(express.cookieParser())
+app.use(cookieParser())
 app.use(express.query())
-app.use(express.bodyParser())
-app.use(express.methodOverride())
-app.use(express.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(methodOverride())
+app.use(bodyParser.json())
 
-app.use(express.static(__dirname + '/public'))
+app.use(serveStatic(__dirname + '/public'))
 
 // expose the shopping cart api
 // the seneca.export('web') method returns a single function with the signature
@@ -57,7 +63,7 @@ app.use(express.static(__dirname + '/public'))
 app.use( seneca.export('web') )
 
 
-// express views for the cart pags
+// express views for the cart pages
 app.engine('ejs',require('ejs-locals'))
 app.set('views', __dirname + '/views')
 app.set('view engine','ejs')
