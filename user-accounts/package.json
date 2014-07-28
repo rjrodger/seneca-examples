@@ -20,7 +20,7 @@
     "optimist": "~0.6.1",
     "ejs": "~1.0.0",
     "ejs-locals": "~1.0.2",
-    "seneca": "~0.5.18",
+    "seneca": "~0.5.19",
     "seneca-user": "~0.2.10",
     "seneca-auth": "~0.2.10",
     "seneca-admin": "~0.1.4",
