@@ -11,7 +11,7 @@
   "dependencies": {
     "body-parser": "~1.4.3",
     "express": "~4.5.1",
-    "seneca": "~0.5.19",
+    "seneca": "~0.5.21",
     "seneca-auth": "~0.2.10",
     "seneca-user": "~0.2.10"
   }

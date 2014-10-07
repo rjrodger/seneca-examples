@@ -4,7 +4,6 @@ module.exports = function( options ) {
   var plugin = 'api'
 
 
-
   seneca.add( {role:plugin, end:'offer'}, end_offer)
   
 

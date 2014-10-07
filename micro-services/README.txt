@@ -25,7 +25,7 @@ $ node index.js
 This always prints merged debug logs for all services. The individual
 logs are saved to the log folder.
 
-The micro-services communicate over the default builtin TCP channel,
+The micro-services communicate over the default built-in HTTP channel,
 and all listen on different ports. Review the .client and .listen
 method calls in the services/*.js files to see how the channels are
 set up.
@@ -35,9 +35,18 @@ lib/*.js. Notice that the user-details service is just pulling out the
 standard seneca-user plugin implementation into a separate service.
 
 Open http://localhost:3000 to see the services in action.
+Login with username:u1, password:u2
+
+The offered product depends on your login status.
 
 The web-app delivers the main web application using express.  
 The user-details delivers user login and logout.
 The offer-service delivers product offers based on the visitor 
 being identified (i.e. logged in) or not.
+
+This example is a vastly simplified version of Fred George's talk:
+http://oredev.org/2013/wed-fri-conference/implementing-micro-service-architectures
+
+
+
 

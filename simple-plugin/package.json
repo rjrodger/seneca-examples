@@ -1,0 +1,17 @@
+{
+  "name": "simple-plugin",
+  "version": "0.0.1",
+  "description": "Simple plugin example",
+  "main": "simple.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test/*.test.js"
+  },
+  "author": "Richard Rodger (http://richardrodger.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^1.21.4"
+  },
+  "dependencies": {
+    "seneca": "^0.5.21"
+  }
+}

@@ -35,9 +35,14 @@ seneca.use('mem-store',{web:{dump:true}})
 // return the next day
 seneca.use('engage')
 
+
+
 // the shopping cart plugin provides standard web shopping cart business logic
 // and also a HTTP JSON api
 seneca.use('cart')
+
+
+
 
 
 
@@ -52,6 +57,8 @@ app.use(methodOverride())
 app.use(bodyParser.json())
 
 app.use(serveStatic(__dirname + '/public'))
+
+
 
 // expose the shopping cart api
 // the seneca.export('web') method returns a single function with the signature
@@ -87,8 +94,8 @@ function handlecart(req,res,next,action) {
   req.seneca.act('role:engage,cmd:get,key:cart',function(err,out) {
     if( err ) return next(err);
 
-    action(out.value, function(cart){
-      req.seneca.act('role:engage,cmd:set,key:cart',{value:cart})
+    action(out.value, function(cart,done){
+      req.seneca.act('role:engage,cmd:set,key:cart',{value:cart},done)
     })
   })
 }
@@ -99,8 +106,10 @@ app.get('/', function(req,res,next) {
     req.seneca.act('role:cart,cmd:get',{cart:cart},function(err,out) {
       if( err ) return next(err);
       
-      end(out.cart)
-      res.render('index.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+      end(out.cart,function(err){
+        if( err ) return next(err);
+        res.render('index.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+      })
     })
   })
 })
@@ -111,8 +120,10 @@ app.get('/cart', function(req,res,next){
     req.seneca.act('role:cart,cmd:get',{cart:cart},function(err,out) {
       if( err ) return next(err);
       
-      end(out.cart)
-      res.render('cart.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+      end(out.cart,function(err){
+        if( err ) return next(err);
+        res.render('cart.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+      })
     })
   })
 })
@@ -123,32 +134,36 @@ app.get('/checkout', function(req,res,next){
     req.seneca.act('role:cart,cmd:get',{cart:cart},function(err,out) {
       if( err ) return next(err);
 
-      end(out.cart)
-      res.render('checkout.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+      end(out.cart,function(err){
+        if( err ) return next(err);
+        res.render('checkout.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
+      })
     })
   })
 })
 
+seneca.ready( function(){
 
-// ensure that cart actions get the cart from the engagement
-seneca.wrap({role:'cart',cmd:'*'},function(args,done){
-  var seneca = this
+  // ensure that cart actions get the cart from the engagement
+  seneca.wrap({role:'cart',cmd:'*'},function(args,done){
+    var seneca = this
 
-  // grab the cart from the engagement
-  handlecart( args.req$, args.res$, done, function(cart,end){
+    // grab the cart from the engagement
+    handlecart( args.req$, args.res$, done, function(cart,end){
 
-    // set the cart parameter for the cart actions
-    args.cart = cart
-    seneca.prior(args,function(err,out){
-      if(err) return done(err);
+      // set the cart parameter for the cart actions
+      args.cart = cart
+      seneca.prior(args,function(err,out){
+        if(err) return done(err);
 
-      // save the updated cart
-      end(cart)
-      done(null,out)
+        // save the updated cart
+        end(cart)
+        done(null,out)
+      })
     })
   })
-})
 
+})
 
 // use the node.js http api to create a HTTP server
 // this allows the admin plugin to use websockets
@@ -159,8 +174,6 @@ server.listen(conf.port)
 // setting means anybody can access the admin panel from localhost
 seneca.use('data-editor',{admin:{local:true}})
 seneca.use('admin',{server:server,local:true})
-
-
 
 // set up some test products for the store
 // create a product entity object
