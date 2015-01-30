@@ -1,4 +1,8 @@
 
+For an introduction to Seneca data entities, please read the
+[senecajs.org tutorial](http://senecajs.org/data-entities.html).
+
+
 Notes:
 
 The code in main.js shows you how to save data entities to different
