@@ -15,8 +15,9 @@ seneca.act('role:offer,cmd:provide,nick:foo',function(err,out){
 })
 
 
-
+/*
 var foo = require('./foo.js')
 seneca.add('mod:foo',foo)
 
 seneca.act('mod:foo,bar:1',console.log)
+*/

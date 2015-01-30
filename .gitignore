@@ -18,5 +18,4 @@ node_modules
 
 config.mine.js
 
-data-entities/json-data
-data-entities/level-data
+data-entities/*-data
