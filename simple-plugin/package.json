@@ -1,6 +1,6 @@
 {
   "name": "simple-plugin",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Simple plugin example",
   "main": "simple.js",
   "scripts": {
@@ -9,9 +9,9 @@
   "author": "Richard Rodger (http://richardrodger.com)",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^1.21.4"
+    "mocha": "^2.1.0"
   },
   "dependencies": {
-    "seneca": "^0.5.21"
+    "seneca": "plugin"
   }
 }

@@ -21,8 +21,9 @@ module.exports = function simple() {
 
     setTimeout( function() {
       suffix = '-zed'
-      seneca.log.log("ready!")
+      seneca.log.info("ready!")
       done()
     }, 111 )
   }
+
 }
