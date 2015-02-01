@@ -1,4 +1,4 @@
-/* Copyright (c) 2012-2014 Richard Rodger, MIT License */
+/* Copyright (c) 2012-2015 Richard Rodger, MIT License */
 "use strict";
 
 

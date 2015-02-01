@@ -1,0 +1,17 @@
+{
+  "name": "api-server-seneca-example",
+  "version": "0.1.0",
+  "description": "API server example",
+  "subdomain": "api-server-seneca-example",
+  "main": "main.js",
+  "repository": "",
+  "author": "Richard Rodger",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "express": "^4.11.1",
+    "request": "^2.51.0",
+    "seneca": "plugin",
+    "seneca-jsonrest-api": "^0.3.0"
+  }
+}
