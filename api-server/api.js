@@ -4,34 +4,53 @@
 module.exports = function api( options ) {
   var seneca = this
 
-  seneca.add('role:api,path:star',        get_star)
-  seneca.add('role:api,path:handle_star', handle_star)
+  seneca.add('role:api,info:hello', hello)
 
-  seneca.use(
-    {name:'jsonrest-api',tag:'product'},
-    {
-      prefix: '/',
-      list:   {embed:'list'},
-      pin:    { name:'product' },
-      startware: verify_token,
-    })
+  seneca.add('role:api,product:star', get_star)
+  seneca.add('role:api,product:handle_star', handle_star)
 
-  seneca.act('role:web',{use:{
-    prefix:'/product',
-    pin:'role:api,path:*',
-    startware: verify_token,
-    map:{
-      star: { 
-        alias:'/star/:id' 
-      },
-      handle_star:{
-        PUT:true,
-        DELETE:true,
-        alias:'/star/:id'
+
+  seneca.add('init:api',function(args,done){
+
+    // Order is significant here!
+
+    seneca.act('role:web',{use:{
+      prefix:'/',
+      pin:'role:api,info:*',
+      map:{
+        hello:true
       }
-    }
-  }})
- 
+    }})
+
+    seneca.use(
+      {name:'jsonrest-api',tag:'product'},
+      {
+        prefix: '/',
+        list:   {embed:'list'},
+        pin:    { name:'product' },
+        startware: verify_token,
+        allow_id: true
+      })
+
+    seneca.act('role:web',{use:{
+      prefix:'/product',
+      pin:'role:api,product:*',
+      startware: verify_token,
+      map:{
+        star: { 
+          alias:'/:id/star' 
+        },
+        handle_star:{
+          PUT:true,
+          DELETE:true,
+          alias:'/:id/star'
+        }
+      }
+    }})
+
+    done()
+  })
+
 
   var internal_err = {
     http$: {status:500},
@@ -54,6 +73,10 @@ module.exports = function api( options ) {
     res.end()
   }
 
+
+  function hello( args, done ) {
+    done(null,{msg:'hello!'})
+  }
 
   function get_star( args, done ) {
     this.make$('product').load$(args.id,function(err,res){

@@ -8,10 +8,11 @@
   "author": "Richard Rodger",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.11.0",
-    "express": "^4.11.1",
-    "request": "^2.51.0",
+    "body-parser": "~1.11.0",
+    "express": "~4.11.1",
+    "lodash": "~3.0.1",
+    "request": "~2.51.0",
     "seneca": "plugin",
-    "seneca-jsonrest-api": "^0.3.0"
+    "seneca-jsonrest-api": "~0.3.1"
   }
 }
