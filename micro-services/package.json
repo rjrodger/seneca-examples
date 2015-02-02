@@ -1,6 +1,6 @@
 {
   "name": "micro-services",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Seneca micro-services example",
   "main": "index.js",
   "scripts": {
@@ -9,10 +9,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "~1.4.3",
-    "express": "~4.5.1",
-    "seneca": "~0.5.21",
-    "seneca-auth": "~0.2.10",
+    "body-parser": "~1.11.0",
+    "express": "~4.11.2",
+    "seneca": "plugin",
+    "seneca-auth": "~0.4.0",
     "seneca-user": "~0.2.10"
   }
 }
