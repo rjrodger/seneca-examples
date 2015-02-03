@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Richard Rodger, MIT License */
+/* Copyright (c) 2013-2015 Richard Rodger, MIT License */
 "use strict";
 
 
@@ -76,12 +76,6 @@ app.set('views', __dirname + '/views')
 app.set('view engine','ejs')
 
 
-// create somes "pins" for convenience
-// the patterns generate objects with methods matching the wildcards
-var cart_pin   = seneca.pin({role:'cart',cmd:'*'})
-var engage_pin = seneca.pin({role:'engage',cmd:'*'})
-
-
 
 // a utility method
 function formatprice(price) {
@@ -89,81 +83,58 @@ function formatprice(price) {
 }
 
 
-// gets cart from engagement, and sets it after changes
-function handlecart(req,res,next,action) {
-  req.seneca.act('role:engage,cmd:get,key:cart',function(err,out) {
-    if( err ) return next(err);
-
-    action(out.value, function(cart,done){
-      req.seneca.act('role:engage,cmd:set,key:cart',{value:cart},done)
-    })
-  })
-}
-
-
 app.get('/', function(req,res,next) {
-  handlecart( req,res,next, function( cart, end ) {
-    req.seneca.act('role:cart,cmd:get',{cart:cart},function(err,out) {
-      if( err ) return next(err);
-      
-      end(out.cart,function(err){
-        if( err ) return next(err);
-        res.render('index.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
-      })
-    })
+  req.seneca.act('role:cart,cmd:get',function(err,out) {
+    if( err ) return next(err);
+    res.render('index.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
   })
 })
 
 
 app.get('/cart', function(req,res,next){
-  handlecart( req,res,next, function( cart, end ) {
-    req.seneca.act('role:cart,cmd:get',{cart:cart},function(err,out) {
-      if( err ) return next(err);
-      
-      end(out.cart,function(err){
-        if( err ) return next(err);
-        res.render('cart.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
-      })
-    })
+  req.seneca.act('role:cart,cmd:get',function(err,out) {
+    if( err ) return next(err);
+    res.render('cart.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
   })
 })
 
 
 app.get('/checkout', function(req,res,next){
-  handlecart( req,res,next, function( cart, end ) {
-    req.seneca.act('role:cart,cmd:get',{cart:cart},function(err,out) {
-      if( err ) return next(err);
-
-      end(out.cart,function(err){
-        if( err ) return next(err);
-        res.render('checkout.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
-      })
-    })
+  req.seneca.act('role:cart,cmd:get',function(err,out) {
+    if( err ) return next(err);
+    res.render('checkout.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
   })
 })
 
-seneca.ready( function(){
+
+// Use seneca.ready to ensure all plugins fully ready
+// before we extend action patterns
+seneca.ready(function(){
 
   // ensure that cart actions get the cart from the engagement
   seneca.wrap({role:'cart',cmd:'*'},function(args,done){
     var seneca = this
+    var prior  = this.prior
 
-    // grab the cart from the engagement
-    handlecart( args.req$, args.res$, done, function(cart,end){
+    if( !args.req$ ) return this.prior( args, done );
 
-      // set the cart parameter for the cart actions
-      args.cart = cart
-      seneca.prior(args,function(err,out){
-        if(err) return done(err);
+    this.act('role:engage,cmd:get,key:cart',function(err,out) {
+      if( err ) return done(err);
 
-        // save the updated cart
-        end(cart)
-        done(null,out)
+      args.cart = out.value
+      prior( args, function(err,out) {
+        if( err ) return done(err);
+
+        this.act('role:engage,cmd:set,key:cart',{value:out.cart.id},function(err){
+          if( err ) return done(err);
+
+          done(null,out)
+        })
       })
     })
   })
-
 })
+
 
 // use the node.js http api to create a HTTP server
 // this allows the admin plugin to use websockets
