@@ -35,7 +35,7 @@ lib/*.js. Notice that the user-details service is just pulling out the
 standard seneca-user plugin implementation into a separate service.
 
 Open http://localhost:3000 to see the services in action.
-Login with username:u1, password:u2
+Login with username:u1, password:u1
 
 The offered product depends on your login status.
 
