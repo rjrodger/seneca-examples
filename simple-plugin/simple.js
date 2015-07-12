@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function simple() {
+module.exports = function simple( options ) {
   var seneca = this
 
   var suffix = ''
