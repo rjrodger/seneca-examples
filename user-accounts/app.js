@@ -51,6 +51,7 @@ seneca.use('auth',{
 // the local-auth handles local auth strategy
 seneca.use('local-auth')
 seneca.use('facebook-auth', options.facebook || {})
+seneca.use('twitter-auth', options.twitter || {})
 
 
 // use the express module in the normal way

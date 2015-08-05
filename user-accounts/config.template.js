@@ -2,19 +2,20 @@ module.exports = {
   main: {
     port: 3000
   },
-
-  auth: {
-    service: {
-      twitter: {
-        key:     "TWITTER_KEY",
-        secret:  "TWITTER_SECRET",
-        urlhost: "http://localhost:3000"
-      },
-      facebook: {
-        key:     "FACEBOOK_ID",
-        secret:  "FACEBOOK_SECRET",
-        urlhost: "http://localhost:3000"
-      }
+  "facebook" : {
+    "appId" : "FB_ID",
+    "appSecret" : "FB_SECRET",
+    "urlhost" : "http://localhost:3000",
+    "serviceParams": {
+      "scope" : [
+        "email"
+      ]
     }
+  },
+  "twitter" : {
+    "apiKey" : "TWITTER_KEY",
+    "apiSecret" : "TWITTER_SECRET",
+    "urlhost" : "http://localhost:3000"
   }
+
 }
