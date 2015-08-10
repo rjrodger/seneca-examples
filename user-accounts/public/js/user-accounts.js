@@ -5,21 +5,21 @@ $(function(){
       username: $('#username').val(),
       password: $('#password').val()
     }
-    http.post('/auth/login',data,showAccount)
+    $.post('/auth/login',data,showAccount)
     return false
   })
 
   $('#logout').click(function(){
-    http.post('/auth/logout',{},showLogin)
+    $.post('/auth/logout',{},showLogin)
   })
 
 
-  http.get('/auth/instance',showAccount)
+  $.get('/auth/user',showAccount)
 })
 
 
-function showAccount(err,instance) {
-  if( err ) return console.log(err);
+function showAccount(instance) {
+  if( !instance.ok ) return console.log(instance.why);
 
   if( instance.user ) {
     $('#user_name').text(instance.user.name)
@@ -30,8 +30,8 @@ function showAccount(err,instance) {
   }
 }
 
-function showLogin(err) {
-  if( err ) return console.log(err);
+function showLogin(data) {
+  if( !data.ok ) return console.log(data.why);
 
   $('#content_login').slideDown()
   $('#content_account').slideUp()
