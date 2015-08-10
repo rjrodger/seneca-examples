@@ -28,26 +28,8 @@ seneca.use('user')
 
 
 // the auth plugin handles HTTP authentication
-seneca.use('auth',{
-  // redirects after login are needed for traditional multi-page web apps
-  redirect:{
-    always: false,
-    restrict: '/',
-    login: {
-      win:  '/account',
-      fail: '/login#failed'
-    },
-    logout: {
-      win:  '/',
-      fail: '/'
-    },
-    register: {
-      always: true,
-      win:  '/account',
-      fail: '/#failed'
-    }
-  }
-})
+seneca.use('auth', options.auth)
+
 // the local-auth handles local auth strategy
 seneca.use('local-auth')
 seneca.use('facebook-auth', options.facebook || {})
