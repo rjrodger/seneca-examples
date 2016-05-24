@@ -7,9 +7,13 @@
   "repository": "",
   "author": "Richard Rodger",
   "license": "MIT",
+  "scripts": {
+    "start": "node main.js",
+    "details": "node main.js --seneca.log.all"
+  },
   "dependencies": {
-    "seneca": "plugin",
-    "seneca-level-store": "~0.2.1",
-    "seneca-jsonfile-store": "~0.2.2"
+    "seneca": "0.6.2",
+    "seneca-jsonfile-store": "~0.2.2",
+    "seneca-level-store": "~0.2.1"
   }
 }

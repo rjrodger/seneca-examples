@@ -18,7 +18,7 @@ module.exports = function product_catalog( options ) {
         if( product ) {
           product.star = Math.max(0,(
             (product.star||0) +
-              ((args.star||true) ? +1 : -1 )))
+              ((args.star&&true) ? +1 : -1 )))
 
           product.save$(function(err,product){
             if(err) return done(err);

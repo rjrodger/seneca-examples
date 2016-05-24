@@ -25,9 +25,8 @@ var seneca  = require('seneca')()
 // enable the /mem-store/dump HTTP end point
 // this lets you see the entire contents of the database as a JSON object
 // in the browser - very useful for debugging!
-// Go to http://localhost:3333/mem-store/dump to debug db contents
+// Go to http://localhost:3000/mem-store/dump to debug db contents
 seneca.use('mem-store',{web:{dump:true}})
-
 
 // use the engage plugin to store extended user sessions
 // these are known as "engagements"
@@ -35,16 +34,9 @@ seneca.use('mem-store',{web:{dump:true}})
 // return the next day
 seneca.use('engage')
 
-
-
 // the shopping cart plugin provides standard web shopping cart business logic
 // and also a HTTP JSON api
 seneca.use('cart')
-
-
-
-
-
 
 // set up express
 var app = express()
@@ -58,8 +50,6 @@ app.use(bodyParser.json())
 
 app.use(serveStatic(__dirname + '/public'))
 
-
-
 // expose the shopping cart api
 // the seneca.export('web') method returns a single function with the signature
 // function(req,res,next) that can be used with connect or express
@@ -69,19 +59,15 @@ app.use(serveStatic(__dirname + '/public'))
 // seneca actions to access the current HTTP req and res objects 
 app.use( seneca.export('web') )
 
-
 // express views for the cart pages
 app.engine('ejs',require('ejs-locals'))
 app.set('views', __dirname + '/views')
 app.set('view engine','ejs')
 
-
-
 // a utility method
 function formatprice(price) {
   return '$' + (void 0 == price ? '0.00' : price.toFixed(2))
 }
-
 
 app.get('/', function(req,res,next) {
   req.seneca.act('role:cart,cmd:get',function(err,out) {
@@ -90,7 +76,6 @@ app.get('/', function(req,res,next) {
   })
 })
 
-
 app.get('/cart', function(req,res,next){
   req.seneca.act('role:cart,cmd:get',function(err,out) {
     if( err ) return next(err);
@@ -98,14 +83,12 @@ app.get('/cart', function(req,res,next){
   })
 })
 
-
 app.get('/checkout', function(req,res,next){
   req.seneca.act('role:cart,cmd:get',function(err,out) {
     if( err ) return next(err);
     res.render('checkout.ejs',{locals:{cart:out.cart,formatprice:formatprice}})
   })
 })
-
 
 // Use seneca.ready to ensure all plugins fully ready
 // before we extend action patterns

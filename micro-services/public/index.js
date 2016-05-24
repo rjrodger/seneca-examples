@@ -14,7 +14,7 @@ $(function(){
       contentType: 'application/json',
       success:     showAccount
     })
-
+    console.log('DATA:', data)
     return false
   })
 
@@ -34,6 +34,12 @@ $(function(){
   $.ajax({type:'GET',url:'/api/offer',success:showOffer})
 })
 
+function print(err, user){
+  if(err){
+    console.log('IN PRINT BUT ERROR:', err)
+  }
+  console.log('AT SHOW ACCOUNT WITH USER:', user)
+}
 
 function showAccount(instance) {
   if( instance.user ) {
@@ -42,7 +48,6 @@ function showAccount(instance) {
 
     $('#content_login').slideUp()
     $('#content_account').slideDown()
-
     $.ajax({type:'GET',url:'/api/offer',success:showOffer})
   }
 }

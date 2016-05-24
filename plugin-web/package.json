@@ -5,7 +5,7 @@
   "subdomain": "plugin-web-seneca-example",
   "main": "app.js",
   "scripts": {
-    "start": "app.js"
+    "start": "node app.js"
   },
   "repository": "",
   "author": "Richard Rodger",

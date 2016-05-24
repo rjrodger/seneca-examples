@@ -45,7 +45,7 @@ function print() {
   var n = _.isFunction( a[a.length-1] ) ? a.pop() : null
 
   request[mstr].apply(request, a.slice(1).concat(function(err,res,body){
-    console.log(mstr,res.req.path,res.statusCode,err||body)
+    console.log(mstr, res.req.path, res.statusCode, err||body)
     !err && n && n()
   }))
 }

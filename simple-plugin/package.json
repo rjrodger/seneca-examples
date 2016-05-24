@@ -4,7 +4,9 @@
   "description": "Simple plugin example",
   "main": "simple.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/*.test.js"
+    "test": "./node_modules/.bin/mocha test/*.test.js",
+    "start": "node main.js",
+    "details":"node main.js --seneca.log.all"
   },
   "author": "Richard Rodger (http://richardrodger.com)",
   "license": "MIT",
