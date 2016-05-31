@@ -16,7 +16,13 @@
     "express": "~4.13.4",
     "lodash": "~4.13.1",
     "request": "~2.72.0",
-    "seneca": "2.1.0",
+    "seneca": "0.6.2",
+    "seneca-entity": "0.1.1",
     "seneca-jsonrest-api": "~0.3.1"
+  },
+  "devDependencies": {
+    "eslint-config-seneca": "2.x.x",
+    "eslint-plugin-standard": "1.x.x",
+    "eslint-plugin-hapi": "4.x.x"
   }
 }

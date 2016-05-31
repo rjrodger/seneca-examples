@@ -30,7 +30,7 @@ extra testing, or new features please get in touch. - Before contributing please
 
 ##  License
 
-Copyright Richard Rodger and other contributors 2013 - 2016, Licensed under [MIT](./LICENSE).
+Copyright Richard Rodger and other contributors 2013 - 2016, Licensed under [MIT](./LICENSE.txt).
  
    
 

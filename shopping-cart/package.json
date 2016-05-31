@@ -20,6 +20,7 @@
     "method-override": "~2.3.6",
     "optimist": "~0.6.1",
     "seneca": "0.6.2",
+    "seneca-entity": "0.1.1",
     "seneca-admin": "~0.2.0",
     "seneca-auth": "~1.0.1",
     "seneca-cart": "~0.2.0",
@@ -28,5 +29,10 @@
     "seneca-jsonrest-api": "~0.3.1",
     "seneca-user": "~1.0.2",
     "serve-static": "~1.10.2"
+  },
+  "devDependencies": {
+    "eslint-config-seneca": "2.x.x",
+    "eslint-plugin-standard": "1.x.x",
+    "eslint-plugin-hapi": "4.x.x"
   }
 }

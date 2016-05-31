@@ -2,11 +2,11 @@ var fs = require('fs')
 var spawn = require('child_process').spawn
 
 
-var services = ['web-app','user-details','offer-service']
+var services = ['web-app', 'user-details', 'offer-service']
 
-services.forEach(function(service){
-  var log  = fs.createWriteStream('./log/'+service+'.log')
-  var proc = spawn('node', ['./services/'+service+'.js','--seneca.log.all'])
+services.forEach(function (service) {
+  var log = fs.createWriteStream('./log/' + service + '.log')
+  var proc = spawn('node', ['./services/' + service + '.js', ' --seneca.log.all'])
 
   proc.stdout.pipe(log)
   proc.stderr.pipe(log)
@@ -14,6 +14,3 @@ services.forEach(function(service){
   proc.stdout.pipe(process.stdout)
   proc.stderr.pipe(process.stderr)
 })
-
-
-

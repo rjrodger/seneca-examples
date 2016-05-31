@@ -28,5 +28,10 @@
     "seneca-jsonrest-api": "~0.3.1",
     "seneca-perm": "~0.5.6",
     "seneca-data-editor": "~0.2.0"
+  },
+  "devDependencies": {
+    "eslint-config-seneca": "2.x.x",
+    "eslint-plugin-standard": "1.x.x",
+    "eslint-plugin-hapi": "4.x.x"
   }
 }

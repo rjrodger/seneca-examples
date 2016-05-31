@@ -15,5 +15,10 @@
   },
   "dependencies": {
     "seneca": "plugin"
+  },
+  "devDependencies": {
+    "eslint-config-seneca": "2.x.x",
+    "eslint-plugin-standard": "1.x.x",
+    "eslint-plugin-hapi": "4.x.x"
   }
 }

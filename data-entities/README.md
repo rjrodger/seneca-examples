@@ -8,7 +8,12 @@ npm install
 native.  If this does not work on your platform (e.g. Windows), just
 comment out the level-store code.
 
+
 ## Run:
+```
+npm run build
+```
+
 ```
 npm run start
 ```
@@ -17,7 +22,6 @@ For detailed logging, try:
 ```
 npm run details
 ```
-
 
 ## Notes:
 
