@@ -1,5 +1,29 @@
 
-Notes:
+## Setup:
+```
+ npm install
+```
+
+## Run:
+```
+npm run start
+```
+
+and then visit:
+```
+http://localhost:3000
+```
+
+Access the admin panel on:
+```
+http://localhost:3000/admin
+```
+For debug db contents go to :
+```
+http://localhost:3000/mem-store/dump 
+```
+
+## Notes:
 
 This example shows the use of:
 
@@ -41,16 +65,5 @@ https://github.com/rjrodger/seneca-cart
 Feel free to contact me on Twitter if you have any questions! :) @rjrodger
 
 
-
-Run with:
-
-node app.js -p 3000
-
-and then visit:
-http://localhost:3000
-
-
-Access the admin panel on:
-http://localhost:3000/admin
 
 

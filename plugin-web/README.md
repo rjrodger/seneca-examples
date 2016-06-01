@@ -1,5 +1,21 @@
 
-Notes:
+## Setup:
+```
+npm install
+```
+
+## Run:
+
+```
+npm run start
+```
+
+and then visit:
+```
+http://localhost:3000
+```
+
+## Notes:
 
 The code in app.js shows you how to configure an express server using
 custom seneca plugins for static page rendering, api communication, and 
@@ -9,13 +25,13 @@ express app via app.use( seneca.export('web') ).
 
 Each of the three plugins is housed in its own directory.  Seneca plugins
 export a function with a signature
-	
+
 	function myPlugin( options ) { ... }
 
 where options are passed from the call to seneca.use. Return a description object to give your plugin an explicit name. For example:
 
-        return { name:'foo' }
-
+  return { name:'foo' }
+	
 When working with middleware plugins, use the role:web,use:[Function]
 pattern to specify a middle function, acception the usual request,
 response, and next arguments.
@@ -30,27 +46,16 @@ as middleware.
 The api-plugin uses Express-like capabilities to map a RESTful API call to
 an http response, using the seneca-web plugin.
 
-For more questions about creating your own custom plugins, check out
-http://senecajs.org/api.html#long-m-use.
-
 To learn more about the seneca-web plugin, visit 
 https://github.com/rjrodger/seneca-web.
+
+To learn more about plugins, visit :
+http://senecajs.org/plugins/#core-plugins
 
 Feel free to contact me on Twitter if you have any questions! :) @rjrodger
 
 
 
-Setup:
-
-npm install
-
-
-Run with:
-
-node app.js
-
-and then visit:
-http://localhost:3000
 
 
 

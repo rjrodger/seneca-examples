@@ -1,37 +1,31 @@
 // PUBLIC DOMAIN
-"use strict";
+'use strict'
 
-module.exports = function product_catalog( options ) {
+module.exports = function product_catalog (options) {
   var seneca = this
-
   seneca.add('role:product,cmd:star', cmd_star)
-
-
-  function cmd_star( args, done ) {
+  function cmd_star (args, done) {
     var seneca = this
-
     seneca
       .make$('product')
-      .load$(args.id,function( err, product ) {
-        if(err) return done(err);
+      .load$(args.id, function (err, product) {
+        if(err) return done(err)
+        if(product) {
+          product.star = Math.max(0, (
+            (product.star || 0) +
+              ((args.star && true) ? +1 : -1)))
 
-        if( product ) {
-          product.star = Math.max(0,(
-            (product.star||0) +
-              ((args.star||true) ? +1 : -1 )))
+          product.save$(function (err, product) {
+            if(err) return done(err)
 
-          product.save$(function(err,product){
-            if(err) return done(err);
-
-            return done(null,{
-              ok:   true,
-              id:   product.id,
+            return done(null, {
+              ok: true,
+              id: product.id,
               star: product.star
             })
           })
         }
-        else return done(null,{ok:false})
+        else return done(null, {ok: false})
       })
   }
-
 }

@@ -1,9 +1,29 @@
 
-For an introduction to Seneca data entities, please read the
-[senecajs.org tutorial](http://senecajs.org/data-entities.html).
+## Setup:
+```
+npm install
+```
+
+* Note: seneca-level-store compiles the level modules, as they are
+native.  If this does not work on your platform (e.g. Windows), just
+comment out the level-store code.
 
 
-Notes:
+## Run:
+```
+npm run build
+```
+
+```
+npm run start
+```
+
+For detailed logging, try:
+```
+npm run details
+```
+
+## Notes:
 
 The code in main.js shows you how to save data entities to different
 places. The two jsonfile-store and single level-store data store
@@ -22,18 +42,11 @@ on disk. The data is also loaded independently of Seneca to verify
 that it actually has been persisted! The entity.native$ method is used
 to do this, as it exposes the underlying database API.
 
+For an introduction to Seneca data entities, please read the
+[senecajs.org tutorial](http://senecajs.org/tutorials/understanding-data-entities.html).
 
-Setup:
-$ npm install
 
-Note: seneca-level-store compiles the level modules, as they are
-native.  If this does not work on your platform (e.g. Windows), just
-comment out the level-store code.
 
-Run with:
-$ node main.js
 
-For detailed logging, try:
-$ node main.js --seneca.log.all
 
 

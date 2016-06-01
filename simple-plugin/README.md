@@ -1,9 +1,29 @@
 
-For an introduction to Seneca data entities, please read the
-[senecajs.org tutorial](http://senecajs.org/data-entities.html).
+## Setup:
+```
+ npm install
+```
+
+## Run:
+```
+ npm run start
+```
+This shows a very common use case for loading and running Seneca
+plugins.
 
 
-Notes:
+For detailed logging, try:
+```
+ npm run details
+```
+
+To run as a micro-service, see micro-service.js
+## Test:
+```
+npm run test
+```
+
+## Notes:
 
 The code in simple.js shows you how to create a simple plugin. Plugins
 are just a way to organise your action patterns into groups so that
@@ -38,23 +58,9 @@ level. These lof entries will be annotated with the name of the plugin
 and the id of the current action, so match them up against other
 actions.
 
+For an introduction to Seneca data entities, please read the
+[senecajs.org tutorial](http://senecajs.org/tutorials/understanding-data-entities.html).
 
-Setup:
-$ npm install
-
-
-Run with:
-$ node main.js
-
-This shows a very common use case for loading and running Seneca
-plugins.
-
-
-For detailed logging, try:
-$ node main.js --seneca.log.all
-
-
-To run as a micro-service, see micro-service.js
 
 
 

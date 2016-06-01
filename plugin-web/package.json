@@ -4,12 +4,12 @@
   "description": "Plugin web example",
   "subdomain": "plugin-web-seneca-example",
   "main": "app.js",
-  "scripts": {
-    "start": "app.js"
-  },
   "repository": "",
   "author": "Richard Rodger",
   "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "express": "~4.11.2",
     "body-parser": "~1.11.0",
@@ -19,5 +19,10 @@
     "seneca": "plugin",
     "connect": "~3.3.4",
     "serve-static": "~1.8.1"
+  },
+  "devDependencies": {
+    "eslint-config-seneca": "2.x.x",
+    "eslint-plugin-standard": "1.x.x",
+    "eslint-plugin-hapi": "4.x.x"
   }
 }

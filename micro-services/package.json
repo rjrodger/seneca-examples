@@ -3,16 +3,23 @@
   "version": "0.1.0",
   "description": "Seneca micro-services example",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "author": "Richard Rodger",
   "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
   "dependencies": {
-    "body-parser": "~1.11.0",
-    "express": "~4.11.2",
+    "body-parser": "~1.15.1",
+    "express": "~4.13.4",
     "seneca": "plugin",
-    "seneca-auth": "~0.4.0",
-    "seneca-user": "~0.2.10"
+    "seneca-entity": "0.1.1",
+    "seneca-auth": "~1.0.1",
+    "seneca-user": "~1.0.2"
+  },
+  "devDependencies": {
+    "eslint-config-seneca": "2.x.x",
+    "eslint-plugin-standard": "1.x.x",
+    "eslint-plugin-hapi": "4.x.x"
   }
 }

@@ -3,35 +3,26 @@
 <h1>Checkout</h1>
 
 <% if( !cart ) { %>
-
-Nothing in your cart.
-<a href="/">buy something</a>
-
-<% } else { %>
-<table>
-
-<% var entries = cart.entries || [] 
-   for( var i = 0; i < entries.length; i++ ) {
-     var entry = entries[i]
-%>
-<tr>
-<td><%-entry.name%></td>
-<td align="right"><%-formatprice(entry.price)%></td>
-</tr>
-<% } %>
-
-<tr>
-<th>Total</th>
-<th align="right"><%-cart.total%></th>
-</tr>
-
-</table>
-
-
-
-
-<% } %>
-
-
-<br />
-<a href="/cart">cancel</a>
+  
+  Nothing in your cart.
+  <a href="/">buy something</a>
+  
+  <% } else { %>
+    <table>    
+      <% var entries = cart.entries || [] 
+      for( var i = 0; i < entries.length; i++ ) {
+        var entry = entries[i]
+        %>
+        <tr>
+          <td><%-entry.name%></td>
+          <td align="right"><%-formatprice(entry.price)%></td>
+        </tr>
+        <% } %>      
+        <tr>
+          <th>Total</th>
+          <th align="right"><%-cart.total%></th>
+        </tr>      
+      </table>      
+      <% } %>            
+      <br />
+      <a href="/cart">cancel</a>
