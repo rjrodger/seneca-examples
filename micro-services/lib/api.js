@@ -2,9 +2,6 @@
 module.exports = function( options ) {
   var seneca = this
   var plugin = 'api'
-  if (seneca.version >= '2.0.0') {
-    seneca.use('entity')
-  }
 
   seneca.add({role: plugin, end: 'offer'}, end_offer)
 

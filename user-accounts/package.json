@@ -21,7 +21,7 @@
     "ejs": "~2.4.1",
     "ejs-locals": "~1.0.2",
     "node-uuid": "~1.4.0",
-    "seneca": "0.6.2",
+    "seneca": "plugin",
     "seneca-user": "~1.0.1",
     "seneca-auth": "~1.0.1",
     "seneca-admin": "~0.2.0",

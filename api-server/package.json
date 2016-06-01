@@ -16,7 +16,7 @@
     "express": "~4.13.4",
     "lodash": "~4.13.1",
     "request": "~2.72.0",
-    "seneca": "0.6.2",
+    "seneca": "plugin",
     "seneca-entity": "0.1.1",
     "seneca-jsonrest-api": "~0.3.1"
   },
