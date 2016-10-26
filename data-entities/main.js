@@ -6,6 +6,8 @@ var util = require('util')
 
 var seneca = require('seneca')()
 
+seneca.use('basic')
+seneca.use('entity')
 // Use two separate instances of jsonfile-store, each looking after a 
 // different set of data entities
 seneca.use( 'jsonfile-store$foo', { folder:'foo-data', map:{'-/foo/-':'*'}})
