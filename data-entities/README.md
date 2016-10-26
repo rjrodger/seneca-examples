@@ -26,6 +26,8 @@ to do this, as it exposes the underlying database API.
 Setup:
 $ npm install
 
+Create folders bar-data, foo-data, zed-data.
+
 Note: seneca-level-store compiles the level modules, as they are
 native.  If this does not work on your platform (e.g. Windows), just
 comment out the level-store code.
