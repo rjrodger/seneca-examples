@@ -19,3 +19,7 @@ example for a fully commented walk through of the example.
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rjrodger/seneca-examples/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
