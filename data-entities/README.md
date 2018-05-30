@@ -1,6 +1,6 @@
 
 For an introduction to Seneca data entities, please read the
-[senecajs.org tutorial](http://senecajs.org/data-entities.html).
+[senecajs.org tutorial](http://senecajs.org/docs/tutorials/understanding-data-entities.html).
 
 
 Notes:
